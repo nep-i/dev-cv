@@ -87,13 +87,7 @@ function App() {
                   width: window.innerWidth > 900 ? '80%' : '100%',
                 }}
               >
-                I started programming in the language 'Pascal' around 2000 but
-                stopped because my life took a different direction. Now I'm glad
-                to be able to pursue programming as a profession and it's social
-                applications. At least in my experience the line between
-                Front/Backend, DevOps, Management and Security was blurred, so
-                being mostly practicing problem solution in the required field
-                that comes on my way.
+                {context?.description && context.description}
               </div>
             </div>
           );
@@ -283,7 +277,9 @@ function App() {
     try {
       console.log('dima');
       const url =
-        process.env.NODE_ENV === 'development' ? 'http://localhost:8000' : '';
+        process.env.NODE_ENV === 'development'
+          ? 'http://localhost:8000'
+          : process.env.REACT_APP_URL;
       const response =
         password.trim().length > 0
           ? await fetch(url + '/api.php', {
